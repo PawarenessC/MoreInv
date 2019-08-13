@@ -29,16 +29,16 @@ class Main extends pluginBase implements Listener{
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) :bool{
 		$name = $sender->getName();
 		if(!$this->players->exists($name)){
-			$inv = $player->getInventory->getContents();
+			$inv = $sender->getInventory->getContents();
 			$this->players->set($name,$inv);
 			$this->players->save();
-			$player->getInventory()->clearAll();
+			$sender->getInventory()->clearAll();
 		}else{
 			$invv = $this->players->get($name);
-			$player->getInventory->setContents($invv);
+			$sender->getInventory->setContents($invv);
 			$this->players->remove($name);
 			$this->players->save();
-			$inv = $player->getInventory->getContents();
+			$inv = $sender->getInventory->getContents();
 			$this->players->set($name,$inv);
 			$this->players->save();
 		}
